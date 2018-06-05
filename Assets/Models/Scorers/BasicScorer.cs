@@ -1,4 +1,7 @@
-﻿namespace UnityDemo.Models.Scorers
+﻿#region
+#endregion
+
+namespace Tanstop.Models.Scorers
 {
     public class BasicScorer : Scorer
     {
@@ -16,7 +19,7 @@
         private int CalculateScore(Player player)
         {
             if (player[0].IsKwang && player[1].IsKwang)
-                return 101;
+                return 200;
             else if (player[0].No == player[1].No)
                 return player[0].No * 10;
             else

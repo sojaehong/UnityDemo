@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#region
+using System.Collections.Generic;
+#endregion
 
-namespace UnityDemo.Models
+namespace Tanstop.Models
 {
     public class Player
     {
@@ -19,6 +21,8 @@ namespace UnityDemo.Models
 
         public int Money { get; private set; }
 
+        public bool Won { get; set; }
+
         internal void IncreaseMoney(int prize)
         {
             Money += prize;
@@ -32,23 +36,15 @@ namespace UnityDemo.Models
         internal void PrepareNewRound()
         {
             _cards.Clear();
+            Won = false;
         }
 
-#if UnitTest
-        public Card AddCard(Card card)
-#else
         internal Card AddCard(Card card)
-#endif
         {
             _cards.Add(card);
             return card;
         }
 
-        /// <summary>
-        /// n 번째 카드를 반환한다.
-        /// </summary>
-        /// <param name="cardIndex"></param>
-        /// <returns></returns>
         public Card this[int cardIndex]
         {
             get { return _cards[cardIndex]; }

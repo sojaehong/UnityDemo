@@ -1,0 +1,10 @@
+{
+    "name": "Scripts",
+    "references": [
+        "Models"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

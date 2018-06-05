@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 #endregion
 
-namespace UnityDemo.Models
+namespace Tanstop.Models
 {
     public struct Card
     {

@@ -1,6 +1,10 @@
-﻿using UnityDemo.Models.Scorers;
+﻿#region
+using System;
+using Tanstop.Models.Scorers;
+using UnityEngine.SocialPlatforms.Impl;
+#endregion
 
-namespace UnityDemo.Models
+namespace Tanstop.Models
 {
     public class Game
     {
@@ -17,26 +21,16 @@ namespace UnityDemo.Models
 
         private Scorer _scorer;
 
-        /// <summary>
-        /// 새 라운드를 시작한다.
-        /// </summary>
-        public void StartNewRound()
+        public void IncreaseRound()
         {
             RoundCount++;
         }
 
-        /// <summary>
-        /// 스코어를 선택한다.
-        /// </summary>
-        /// <param name="scorerType"></param>
-        public void SelectScorer(ScorerType scorerType)
+        public void SelectStrategy(ScorerType scorerType)
         {
             _scorer = Scorer.Create(scorerType);
         }
 
-        /// <summary>
-        /// 플레이어들에게 카드를 두 장씩 나눠준다.
-        /// </summary>
         public void DistributeCards()
         {
             Deck.Instance.PrepareNewRound();
@@ -49,10 +43,6 @@ namespace UnityDemo.Models
                     player.AddCard(Deck.Instance.Draw());
         }
 
-        /// <summary>
-        /// 승자의 인덱스를 반환한다.
-        /// </summary>
-        /// <returns></returns>
         public int GetWinnerIndex()
         {
             Player winner = _scorer.GetWinner(_players[0], _players[1]);
@@ -63,10 +53,6 @@ namespace UnityDemo.Models
             return winner == _players[0] ? 0 : 1;
         }
 
-        /// <summary>
-        /// 파산한 플레이어를 반환한다.
-        /// </summary>
-        /// <returns>파산한 플레이어. 아무도 파산하지 않았으면 null</returns>
         public Player CheckBankrupt()
         {
             foreach (var player in _players)
@@ -76,19 +62,8 @@ namespace UnityDemo.Models
             return null;
         }
 
-//        public Player this[int playerIndex] => _players[playerIndex];
-
-        public Player this[int playerIndex]
-        {
-            get { return _players[playerIndex]; }
-        }
+        public Player this[int playerIndex] => _players[playerIndex];
 
         public Card this[int playerIndex, int cardIndex] => this[playerIndex][cardIndex];
-    }
-
-    public enum ScorerType
-    {
-        Basic,
-        Simple
     }
 }

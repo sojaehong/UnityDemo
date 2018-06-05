@@ -1,0 +1,14 @@
+{
+    "name": "UnitTests",
+    "references": [
+        "Models"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

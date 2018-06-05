@@ -2,11 +2,11 @@
 using System;
 #endregion
 
-namespace UnityDemo.Models.Scorers
+namespace Tanstop.Models.Scorers
 {
     public abstract class Scorer
     {
-        public abstract Player GetWinner(Player p1, Player p2);
+        public abstract Models.Player GetWinner(Models.Player p1, Models.Player p2);
 
         public static Scorer Create(ScorerType scorerType)
         {
@@ -20,5 +20,11 @@ namespace UnityDemo.Models.Scorers
                     throw new NotImplementedException("Scorer.Create");
             }
         }
+    }
+
+    public enum ScorerType
+    {
+        Basic,
+        Simple
     }
 }

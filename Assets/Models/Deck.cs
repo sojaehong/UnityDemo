@@ -1,8 +1,10 @@
-﻿using System;
+﻿#region
+using System;
 using System.Collections.Generic;
 using System.Linq;
+#endregion
 
-namespace UnityDemo.Models
+namespace Tanstop.Models
 {
     public class Deck
     {
@@ -39,20 +41,12 @@ namespace UnityDemo.Models
 
         private int _index = 0;
 
-        /// <summary>
-        /// 새 라운드를 위해 카드를 썩는다
-        /// </summary>
         public void PrepareNewRound()
         {
-            // Standard Query Operator
             _cards = _cards.OrderBy(x => Guid.NewGuid()).ToList();
             _index = 0;
         }
 
-        /// <summary>
-        /// 카드를 반환한다.
-        /// </summary>
-        /// <returns></returns>
         public Card Draw()
         {
             return _cards[_index++];

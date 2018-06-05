@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - 'Button #2'
+  - Card
+  - Money
+  - PlayerPanel
+  - StrategyModal
   layers:
   - Default
   - TransparentFX

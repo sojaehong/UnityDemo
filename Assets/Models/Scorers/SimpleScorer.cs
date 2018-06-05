@@ -1,4 +1,4 @@
-﻿namespace UnityDemo.Models.Scorers
+﻿namespace Tanstop.Models.Scorers
 {
     public class SimpleScorer : Scorer
     {
