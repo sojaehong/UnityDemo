@@ -58,16 +58,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Packages\ModalDialog\BringToFront.cs" />
-    <Compile Include="Assets\Packages\ModalDialog\DisplayManager.cs" />
-    <Compile Include="Assets\Packages\ModalDialog\ModalPanel.cs" />
-    <Compile Include="Assets\Packages\ModalDialog\ProgramNotes.cs" />
-    <Compile Include="Assets\Packages\ModalDialog\TestModalWindow.cs" />
-    <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/git/UnityDemo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
-    </Reference>
+    <Compile Include="Assets\Scripts\Constants\Tags.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Helpers\GameObjectHelper.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>D:/git/UnityDemo/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>D:/git/UnityDemo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -614,10 +612,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Scripts.csproj">
-      <Project>{C2826233-AE82-DDF7-CAC3-DE8F8C80D507}</Project>
-      <Name>Scripts</Name>
-    </ProjectReference>
     <ProjectReference Include="Models.csproj">
       <Project>{C93D7E75-7380-1714-3DE2-9654EAA5F5F0}</Project>
       <Name>Models</Name>
