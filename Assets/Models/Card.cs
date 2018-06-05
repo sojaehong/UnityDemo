@@ -1,27 +1,23 @@
 ﻿#region
-using System.Collections.Generic;
 #endregion
 
-namespace Tanstop.Models
+public struct Card
 {
-    public struct Card
+    public Card(int no, bool isKwang)
     {
-        public Card(int no, bool isKwang)
-        {
-            No = no;
-            IsKwang = isKwang;
-        }
+        No = no;
+        IsKwang = isKwang;
+    }
 
-        public int No { get; private set; }
+    public int No { get; private set; }
 
-        public bool IsKwang { get; private set; }
+    public bool IsKwang { get; private set; }
 
-        public override string ToString()
-        {
-            if (IsKwang)
-                return $"{No}K";
-            else
-                return $"{No}";
-        }
+    public override string ToString()
+    {
+        if (IsKwang)
+            return $"{No}K";
+        else
+            return $"{No}";
     }
 }

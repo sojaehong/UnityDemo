@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using UnityDemo.Models;
-using UnityDemo.Models.Scorers;
 using UnityEngine;
 
 namespace Assets.Tests

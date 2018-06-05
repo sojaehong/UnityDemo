@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using UnityDemo.Models;
-using UnityDemo.Models.Scorers;
 
 namespace Assets.Tests
 {

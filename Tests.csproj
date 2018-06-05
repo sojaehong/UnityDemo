@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6992CF3C-38DA-8C31-F81F-76CCD03931FE}</ProjectGuid>
+    <ProjectGuid>{A24C1411-8D3B-D2C1-1065-F16E52983FB7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Tests</AssemblyName>
@@ -58,7 +58,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\Tests\GameTest.cs" />
+    <Compile Include="Assets\Tests\BasicScorerTest_김수민.cs" />
+    <Compile Include="Assets\Tests\BasicScorerTest_이경수.cs" />
+    <Compile Include="Assets\Tests\BasicScorerTest_장우람.cs" />
+    <Compile Include="Assets\Tests\BasicScorerTest_최정빈.cs" />
+    <Compile Include="Assets\Tests\BasicScorerTest_한지혜.cs" />
+    <Compile Include="Assets\Tests\DeckTest.cs" />
+    <Compile Include="Assets\Tests\SimpleScorerTest _남민우.cs" />
+    <Compile Include="Assets\Tests\SimpleScorerTest.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -298,12 +305,6 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>D:/git/Tanstop/Tanstop/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityScriptHelper">
-      <HintPath>D:/git/Tanstop/Tanstop/Assets/References/UnityScriptHelper.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/thkim/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -668,7 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Models.csproj">
-      <Project>{F99E0D4A-579C-115F-1800-D0D50D16F678}</Project>
+      <Project>{C93D7E75-7380-1714-3DE2-9654EAA5F5F0}</Project>
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>

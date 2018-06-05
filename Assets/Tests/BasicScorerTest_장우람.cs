@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using UnityDemo.Models;
-using UnityDemo.Models.Scorers;
 
 namespace Assets.Tests
 {
