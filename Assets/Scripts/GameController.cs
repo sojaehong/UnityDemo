@@ -15,7 +15,9 @@ public class GameController : MonoBehaviourEx
     private Game _game;
 
     [AutoLoad]
-    private GameObject plnScorer;
+    private GameObject pnlScorer;
+
+    [AutoLoad]
     private GameObject pnlNewRound;
 
     private void Show(GameObject gameObject)
@@ -28,14 +30,16 @@ public class GameController : MonoBehaviourEx
         gameObject.transform.localScale = Vector3.zero;
     }
 
-    private void Start()
+    protected override void Awake()
     {
-//        pnlScorer = GameObject.Find("pnlScorer");
-        pnlNewRound = GameObject.Find("pnlNewRound");
+        base.Awake();
 
         Hide(pnlScorer);
         Hide(pnlNewRound);
+    }
 
+    protected override void Start()
+    {
         _game = new Game();
 
         gobCards = GameObjectHelper.FindByTagInOrder(Tags.Card);

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Networking;
@@ -21,6 +23,50 @@ using UnityEngine.XR.WSA;
 /// </summary>
 public class MonoBehaviourEx : MonoBehaviour
 {
+    [Header("필드 자동 로딩")]
+    [Tooltip("이름이 같은 GameObject를 자동으로 로딩. Awake 재정의 시 base.Awake()를 호출하여야 함.")]
+    public bool FieldAutoLoad = false;
+
+    protected virtual void Awake()
+    {
+        if (FieldAutoLoad)
+            LoadFieldByName();
+    }
+
+    private void LoadFieldByName()
+    {
+        Type type = GetType();
+
+        // private GameObject pnlScorer;
+        // Name <-- pnlScorer
+        // FieldType <-- GameObject
+        // IsPublic <-- false
+
+        FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
+        foreach (var fieldInfo in fieldInfos)
+        {
+            if (fieldInfo.FieldType.IsAssignableFrom(typeof(GameObject)) == false)
+                continue;
+
+            AutoLoadAttribute attribute = (AutoLoadAttribute) Attribute.GetCustomAttribute(fieldInfo, typeof(AutoLoadAttribute));
+
+            if (attribute == null)
+                continue;
+
+            if (attribute.FieldAutoLoadType != FieldAutoLoadType.ChildOnly)
+                continue;
+
+            GameObject gameObject = GameObject.Find(fieldInfo.Name);
+            if (gameObject == null)
+            {
+                Debug.LogError($"이름이 {fieldInfo.Name}인 GameObject를 찾지 못하였습니다.");
+                continue;
+            }
+
+            fieldInfo.SetValue(this, gameObject);
+        }
+    }
+
     #region Components Cache
     public virtual void OnDisable()
     {

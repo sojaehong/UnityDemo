@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 #endregion
 
-public class PlayerPanelController : MonoBehaviour
+public class PlayerPanelController : BindableMonoBehaviour<Player>
 {
-    public void BindModel(Player model)
+    public override void BindModel(Player model)
     {
         model.Won += OnWon;
         model.Defeated += OnDefeated;
@@ -15,20 +15,16 @@ public class PlayerPanelController : MonoBehaviour
 
     private void OnDefeated(object sender, Player.DefeatedEventArgs e)
     {
-        GetComponent<Image>().color = _loserColor;
+        Image.color = _loserColor;
     }
 
     private void OnWon(object sender, Player.WonEventArgs e)
     {
-        GetComponent<Image>().color = Color.green;
+        Image.color = Color.green;
     }
 
-    void Start()
+    protected override void Start()
     {
         _loserColor = GetComponent<Image>().color;
-    }
-
-    void Update()
-    {
     }
 }

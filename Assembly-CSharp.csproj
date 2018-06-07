@@ -64,7 +64,9 @@
     <Compile Include="Assets\Scripts\Controllers\RoundController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Helpers\GameObjectHelper.cs" />
-    <Compile Include="Assets\Scripts\Library\MonoBehaviourEx.cs" />
+    <Compile Include="Assets\Scripts\Library\ScriptHelper\AutoLoadAttribute.cs" />
+    <Compile Include="Assets\Scripts\Library\ScriptHelper\BindableMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Library\ScriptHelper\MonoBehaviourEx.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/git/UnityDemo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

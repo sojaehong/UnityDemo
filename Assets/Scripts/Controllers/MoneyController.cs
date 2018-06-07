@@ -4,25 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 #endregion
 
-public class MoneyController : MonoBehaviour
+public class MoneyController : BindableMonoBehaviour<Player>
 {
-    public void BindModel(Player model)
+    public override void BindModel(Player model)
     {
         model.MoneyChanged += OnMoneyChanged;
     }
 
     private void OnMoneyChanged(object sender, Player.MoneyChangedEventArgs e)
     {
-        GetComponent<Text>().text = e.Money.ToString("N0");
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        Text.text = e.Money.ToString("N0");
     }
 }
