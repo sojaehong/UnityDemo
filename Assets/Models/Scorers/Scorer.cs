@@ -22,6 +22,6 @@ public abstract class Scorer
 
 public enum ScorerType
 {
-    Basic,
+    Basic = 0,
     Simple
 }

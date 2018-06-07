@@ -21,9 +21,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         gobCards = GameObjectHelper.FindByTagInOrder(Tags.Card);
-        
         gobMoney = GameObjectHelper.FindByTagInOrder(Tags.Money);
-
         gobPlayerPanels = GameObjectHelper.FindByTagInOrder(Tags.PlayerPanel);
 
         txtRound = GameObject.Find("txtRound");
@@ -35,7 +33,23 @@ public class GameController : MonoBehaviour
 
 
 
+//        for (int i = 0; i < gobCards.Length; i++)
+//            gobCards[i].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/" + (i + 1));
+    }
+
+    public void ScorerButton_Click(int scorerType)
+    {
+        _game.SelectScorer((ScorerType) scorerType);
+
+        _game.DistributeCards();
+
         for (int i = 0; i < gobCards.Length; i++)
-            gobCards[i].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/" + (i + 1));
+        {
+            Card card = _game[i/2][i%2];
+
+            gobCards[i].GetComponent<Image>().sprite = Resources.Load<Sprite>($"Images/{card}");
+        }
+
+        Debug.Log((ScorerType)scorerType);
     }
 }
