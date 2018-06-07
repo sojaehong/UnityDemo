@@ -18,27 +18,54 @@ public class GameController : MonoBehaviour
 
     private Game _game;
 
+    private Color _loserColor;
+
+    private GameObject pnlScorer;
+    private GameObject pnlNewRound;
+
+    private void Show(GameObject gameObject)
+    {
+        gameObject.transform.localScale = Vector3.one;
+    }
+
+    private void Hide(GameObject gameObject)
+    {
+        gameObject.transform.localScale = Vector3.zero;
+    }
+
     private void Start()
     {
+        pnlScorer = GameObject.Find("pnlScorer");
+        pnlNewRound = GameObject.Find("pnlNewRound");
+
+        Hide(pnlScorer);
+        Hide(pnlNewRound);
+
         gobCards = GameObjectHelper.FindByTagInOrder(Tags.Card);
         gobMoney = GameObjectHelper.FindByTagInOrder(Tags.Money);
         gobPlayerPanels = GameObjectHelper.FindByTagInOrder(Tags.PlayerPanel);
 
+        _loserColor = gobPlayerPanels[0].GetComponent<Image>().color;
+
         txtRound = GameObject.Find("txtRound");
 
         _game = new Game();
-        _game.StartNewRound();
 
+        StartNewRound();
+    }
+
+    private void StartNewRound()
+    {
+        _game.StartNewRound();
         txtRound.GetComponent<Text>().text = $"Round {_game.RoundCount}";
 
-
-
-//        for (int i = 0; i < gobCards.Length; i++)
-//            gobCards[i].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/" + (i + 1));
+        Show(pnlScorer);
     }
 
     public void ScorerButton_Click(int scorerType)
     {
+        Hide(pnlScorer);
+
         _game.SelectScorer((ScorerType) scorerType);
 
         _game.DistributeCards();
@@ -50,6 +77,24 @@ public class GameController : MonoBehaviour
             gobCards[i].GetComponent<Image>().sprite = Resources.Load<Sprite>($"Images/{card}");
         }
 
-        Debug.Log((ScorerType)scorerType);
+        // [밑줄쫙] 여기서 플레이어의 돈을 이동하면 안됨
+        int winnerIndex = _game.GetWinnerIndex();
+        int loserIndex = winnerIndex == 0 ? 1 : 0;
+
+        gobPlayerPanels[winnerIndex].GetComponent<Image>().color = Color.green;
+        gobPlayerPanels[loserIndex].GetComponent<Image>().color = _loserColor;
+
+        for (int i = 0; i < gobMoney.Length; i++)
+            gobMoney[i].GetComponent<Text>().text = _game[i].Money.ToString("N0");
+
+        Show(pnlNewRound);
+    }
+
+    public void NewRoundButton_Click(bool newRound)
+    {
+        Hide(pnlNewRound);
+
+        if (newRound)
+            StartNewRound();
     }
 }
