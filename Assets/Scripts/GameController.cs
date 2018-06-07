@@ -12,8 +12,6 @@ public class GameController : MonoBehaviour
 
     private GameObject[] gobCards;
 
-    private GameObject txtRound;
-
     private Game _game;
 
     private GameObject pnlScorer;
@@ -41,6 +39,8 @@ public class GameController : MonoBehaviour
 
         gobCards = GameObjectHelper.FindByTagInOrder(Tags.Card);
 
+        GameObject.Find("txtRound").GetComponent<RoundController>().BindModel(_game);
+
         GameObject[] gobMoney = GameObjectHelper.FindByTagInOrder(Tags.Money);
         for (int i = 0; i < gobMoney.Length; i++)
             gobMoney[i].GetComponent<MoneyController>().BindModel(_game[i]);
@@ -49,15 +49,12 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < gobPlayerPanels.Length; i++)
             gobPlayerPanels[i].GetComponent<PlayerPanelController>().BindModel(_game[i]);
 
-        txtRound = GameObject.Find("txtRound");
-
         StartNewRound();
     }
 
     private void StartNewRound()
     {
         _game.StartNewRound();
-        txtRound.GetComponent<Text>().text = $"Round {_game.RoundNo}";
 
         Show(pnlScorer);
     }
@@ -79,8 +76,6 @@ public class GameController : MonoBehaviour
 
         _game.GetWinnerIndex();
 
-        // [밑줄쫙] 여기서 플레이어의 돈을 이동하면 안됨
-        
         Show(pnlNewRound);
     }
 
