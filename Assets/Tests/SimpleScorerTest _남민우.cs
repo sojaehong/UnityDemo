@@ -18,7 +18,7 @@ namespace Assets.Tests
             game.StartNewRound();
 
             Assert.AreEqual("Ringo", game[1].Name);
-            Assert.AreEqual(1, game.RoundCount);
+            Assert.AreEqual(1, game.RoundNo);
         }
 
         [Test]

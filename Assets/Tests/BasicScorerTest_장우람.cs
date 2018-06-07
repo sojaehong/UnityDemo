@@ -65,7 +65,7 @@ namespace Assets.Tests
 
             game.StartNewRound();
 
-            Assert.AreEqual(1, game.RoundCount);
+            Assert.AreEqual(1, game.RoundNo);
         }
     }
 }
