@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 #endregion
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviourEx
 {
     // 헝가리안 표기법 (iAge, sName) txtName, btnRun
 
@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour
 
     private Game _game;
 
-    private GameObject pnlScorer;
+    [AutoLoad]
+    private GameObject plnScorer;
     private GameObject pnlNewRound;
 
     private void Show(GameObject gameObject)
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        pnlScorer = GameObject.Find("pnlScorer");
+//        pnlScorer = GameObject.Find("pnlScorer");
         pnlNewRound = GameObject.Find("pnlNewRound");
 
         Hide(pnlScorer);
